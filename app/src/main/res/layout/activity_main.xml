@@ -3,40 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.webbrowser.webbrowser.MainActivity">
+    tools:context="com.webbrowser.webbrowser.MainActivity"
+    android:id="@+id/relativeLayout">
 
     <Button
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="&lt;"
         android:id="@+id/buttonBack"
+        android:onClick="buttonBackButtonClicked"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
-        android:clickable="true"
-        android:enabled="true"
-        android:layout_marginTop="0dp"
-        android:layout_marginLeft="0dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editTextAddress"
-        android:singleLine="true"
-        android:textIsSelectable="false"
-        android:enabled="true"
-        android:imeActionLabel="actionGo"
-        android:editable="true"
-        android:layout_toRightOf="@+id/buttonBack"
-        android:layout_toEndOf="@+id/buttonBack"
-        android:layout_toStartOf="@id/buttonNavigateOrRefresh"
-        android:text="http://www.google.fi"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentStart="false" />
 
     <Button
         android:layout_width="wrap_content"
@@ -46,21 +24,87 @@
         android:onClick="buttonNavigateOrRefreshButtonClicked"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextAddress"
+        android:layout_below="@+id/buttonBack"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:clickable="true" />
+        android:inputType="textUri"
+        android:imeOptions="actionGo"
+        android:layout_alignParentRight="true"
+        android:singleLine="true"
+        android:text="http://www.google.fi" />
 
     <WebView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/webView"
         android:layout_below="@+id/editTextAddress"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentStart="false"
+        android:layout_above="@+id/buttonSettings" />
+
+    <ProgressBar
+        style="@android:style/Widget.Holo.Light.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_alignParentTop="true"
+        android:visibility="invisible"
+        android:layout_toLeftOf="@+id/buttonNavigateOrRefresh" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=">"
+        android:id="@+id/buttonForward"
+        android:onClick="buttonForwardButtonClicked"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/buttonBack"
+        android:layout_marginLeft="10dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:text="Settings"
+        android:id="@+id/buttonSettings"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/editTextAddress"
-        android:layout_alignEnd="@+id/editTextAddress"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="false"
+        android:textColor="#ffffff"
+        android:background="#005eff"
+        android:layout_alignTop="@+id/searchView" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:text="Exit"
+        android:id="@+id/buttonExit"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="false"
-        android:layout_marginTop="5dp" />
+        android:textColor="#ffffff"
+        android:background="#ff0000"
+        android:onClick="buttonExitButtonClicked"
+        android:layout_alignTop="@+id/buttonSettings" />
+
+    <SearchView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchView"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/buttonSettings"
+        android:layout_toLeftOf="@+id/buttonExit"
+        android:background="#d3d3d3"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:clickable="false"
+        android:orientation="horizontal"
+        android:contextClickable="true" />
+
 </RelativeLayout>
